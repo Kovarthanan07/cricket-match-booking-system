@@ -37,5 +37,5 @@ match_schema.virtual('bookingMatch', {
 });
 
 const Match = mongoose.model('Match', match_schema);
-
+//type
 module.exports = Match;
