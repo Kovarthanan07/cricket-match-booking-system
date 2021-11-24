@@ -29,7 +29,10 @@ const port = 5002;
 require('dotenv').config();
 require('./db/mongoose');
 
+const user_router = require('../server/src/user/routes/user');
+
 app.use(cors());
+app.use(user_router);
 
 app.listen(port, () => {
   console.log(`Cricket booking system backend at http://localhost:${port}`);
