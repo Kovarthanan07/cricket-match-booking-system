@@ -30,9 +30,15 @@ require('dotenv').config();
 require('./db/mongoose');
 
 const user_router = require('../server/src/user/routes/user');
+const ticket_router = require('../server/src/ticket/routes/ticket');
+const match_router = require('../server/src/match/routes/match');
+const booking_router = require('../server/src/booking/routes/booking');
 
 app.use(cors());
 app.use(user_router);
+app.use(ticket_router);
+app.use(match_router);
+app.use(booking_router);
 
 app.listen(port, () => {
   console.log(`Cricket booking system backend at http://localhost:${port}`);
