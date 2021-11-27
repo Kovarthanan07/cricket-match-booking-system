@@ -31,7 +31,7 @@ const view_all_my_booking = async (req, res) => {
     const bookings = await Booking.find({ customer: req.customer._id })
       .populate('ticket')
       .populate('match');
-    res.send(Bookings);
+    res.send(bookings);
   } catch (error) {
     res.status(400).send(error.message);
   }

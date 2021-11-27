@@ -146,6 +146,15 @@ const update_admin_password = async (req, res) => {
   }
 };
 
+const get_all_customers = async (req, res) => {
+  try {
+    const allUsers = await User.find({ role: 'customer' });
+    res.send(allUsers);
+  } catch (error) {
+    res.status(500).send(e.message);
+  }
+};
+
 // const update_admin = async (req, res) => {
 //   const updates = Object.keys(req.body);
 //   const allowedKeys = ['display_name', 'password'];
@@ -208,4 +217,5 @@ module.exports = {
   logout,
   update_customer_password,
   update_admin_password,
+  get_all_customers,
 };

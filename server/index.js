@@ -34,6 +34,7 @@ const ticket_router = require('../server/src/ticket/routes/ticket');
 const match_router = require('../server/src/match/routes/match');
 const booking_router = require('../server/src/booking/routes/booking');
 const news_router = require('../server/src/news/routes/news');
+const stadium_router = require('../server/src/stadium/routes/stadium');
 
 app.use(cors());
 app.use(user_router);
@@ -41,6 +42,7 @@ app.use(ticket_router);
 app.use(match_router);
 app.use(booking_router);
 app.use(news_router);
+app.use(stadium_router);
 
 app.listen(port, () => {
   console.log(`Cricket booking system backend at http://localhost:${port}`);

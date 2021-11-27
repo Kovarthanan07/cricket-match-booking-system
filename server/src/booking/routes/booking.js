@@ -20,6 +20,6 @@ router.get(
   view_all_match_booking
 );
 router.patch('/api/updateBooking/:booking_id', auth.is_anyone, update_booking);
-router.delete('api/deleteBooking/:booking_id', auth.is_anyone, delete_booking);
+router.delete('/api/deleteBooking/:booking_id', auth.is_anyone, delete_booking);
 
 module.exports = router;

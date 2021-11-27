@@ -15,11 +15,9 @@ const match_schema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    playing_teams: [
-      {
-        type: String,
-      },
-    ],
+    playing_teams: {
+      type: String,
+    },
     status: {
       type: String,
       enum: ['finished', 'future', 'cancelled'],

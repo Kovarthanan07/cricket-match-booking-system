@@ -10,7 +10,7 @@ const ticket_schema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    describtion: {
+    description: {
       type: String,
     },
   },

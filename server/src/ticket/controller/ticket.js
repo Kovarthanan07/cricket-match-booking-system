@@ -25,7 +25,7 @@ const view_ticket = async (req, res) => {
 
 const update_ticket = async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedKeys = ['name', 'price', 'describtion'];
+  const allowedKeys = ['name', 'price', 'description'];
 
   const isValidOperation = updates.every((update) => {
     return allowedKeys.includes(update);
