@@ -8,7 +8,7 @@ const news_schema = new mongoose.Schema(
     },
 
     body: {
-      type: Date,
+      type: String,
       required: true,
     },
   },
