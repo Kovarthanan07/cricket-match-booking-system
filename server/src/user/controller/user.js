@@ -155,6 +155,14 @@ const get_all_customers = async (req, res) => {
   }
 };
 
+const delete_customer = async (req, res) => {
+  try {
+    const user = await User.deleteOne({ _id: req.params.customer_id });
+    res.send(user);
+  } catch (e) {
+    res.status(500).send(e.message);
+  }
+};
 // const update_admin = async (req, res) => {
 //   const updates = Object.keys(req.body);
 //   const allowedKeys = ['display_name', 'password'];
@@ -218,4 +226,5 @@ module.exports = {
   update_customer_password,
   update_admin_password,
   get_all_customers,
+  delete_customer,
 };
