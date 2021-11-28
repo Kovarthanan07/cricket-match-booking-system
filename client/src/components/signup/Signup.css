@@ -1,0 +1,31 @@
+.image-input {
+    text-aling: center;
+}
+input {
+    display: none;
+}
+.image-button {
+    display: block;
+    color: #FFF;
+    background: #000;
+    padding: .3rem .6rem;
+    font-size: 115%;
+    cursor: pointer;
+}
+.fa-image {
+    font-size: 125%;
+    margin-right: .3rem;
+}
+.fa-image:hover {
+    animation: shake .35s;
+}
+.image-preview {max-width: 175px;display: none;}
+.change-image {
+    display: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.text-danger{
+    color: #ef2f2f;
+}
