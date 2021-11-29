@@ -14,7 +14,7 @@ function CustomerDash() {
 
     return(
         <Container maxWidth="lg" style={{backgroundColor:"#FFF",marginTop:20}}>
-            <Typography fontSize={35} style={{textAlign:"center",padding:20}}>Admin Dashboard</Typography>
+            <Typography fontSize={35} style={{textAlign:"center",padding:20}}>User Dashboard</Typography>
             <Grid container direction="row" alignItems="center" justifyContent="center">
                 <Grid container style={{paddingTop:20, paddingBottom:20,paddingLeft:5,paddingRight:5}} item xs={12} sm={6} lg={4}>
                     <Paper elevation={3}  container  item alignItems='center' justifyContent='center' style={{backgroundColor:"white", width:"100%", height:260, borderRadius:20,alignItems:"center",justifyContent:'center',

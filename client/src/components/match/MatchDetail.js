@@ -1,43 +1,86 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import {Grid} from "@mui/material";
+import Button from "@mui/material/Button";
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'name', headerName: 'Name', width: 150 },
-    { field: 'venue', headerName: 'Venue', width: 150 },
-    { field: 'match_date', headerName: 'Match Date', width: 130 },
+    { field: 'Team', headerName: 'Name', width: 150 },
+    { field: 'Stadium', headerName: 'Venue', width: 150 },
+    { field: 'Match_date', headerName: 'Match Date', width: 130 },
     {
-        field: 'viewers_count',
+        field: 'status',
         headerName: 'Viewers count',
         type: 'String',
         width: 150,
     },
     {
-        field: 'playing_teams',
-        headerName: 'Playing teams',
-        type: 'String',
-        width: 220,
+        field: 'update',
+        headerName: 'Update',
+        width: 150,
+        disableClickEventBubbling: true,
+        renderCell: (params) => {
+            const onClick = () => {
+                const api = params.api;
+                const fields = api
+                    .getAllColumns()
+                    .map((c) => c.field)
+                    .filter((c) => c !== '__check__' && !!c);
+                const thisRow = {};
+
+                fields.forEach((f) => {
+                    thisRow[f] = params.getValue(f);
+                });
+
+            };
+
+            return (
+                <Button color="primary" onClick={onClick}>
+                    Update
+                </Button>
+            );
+        },
     },
     {
-        field: 'address',
-        headerName: 'Address',
-        sortable: false,
-        width: 300,
+        field: 'delete',
+        headerName: 'Delete',
+        width: 150,
+        disableClickEventBubbling: true,
+        renderCell: (params) => {
+            const onClick = () => {
+                const api = params.api;
+                const fields = api
+                    .getAllColumns()
+                    .map((c) => c.field)
+                    .filter((c) => c !== '__check__' && !!c);
+                const thisRow = {};
+
+                fields.forEach((f) => {
+                    thisRow[f] = params.getValue(f);
+                });
+
+            };
+
+            return (
+                <Button color="secondary" onClick={onClick}>
+                    Delete
+                </Button>
+            );
+        },
     },
 
 ];
 
 const rows = [
-    { id: 1, name: 'Snow', venue: 'Jon',match_date:"24-05-2021",viewers_count:5, playing_teams: 'India vs SL',status:'Progress', },
-    { id: 2, name: 'Lannister', venue: 'Cersei', match_date:"24-05-2021",viewers_count:5, playing_teams: 'India vs SL',status:'Progress', },
-    { id: 3, name: 'Lannister', venue: 'Jaime', match_date:"24-05-2021",viewers_count:5, playing_teams: 'India vs SL',status:'Progress', },
-    { id: 4, lastName: 'Stark', venue: 'Arya', match_date:"24-05-2021",viewers_count:5, playing_teams: 'India vs SL',status:'Progress'},
-    { id: 5, name: 'Targaryen', venue: 'Daenerys', match_date:"24-05-2021",viewers_count:5, playing_teams: 'India vs SL',status:'Progress' },
-    { id: 6, name: 'Melisandre', venue: null, match_date:"24-05-2021",viewers_count:5, playing_teams: 'India vs SL',status:'Progress'},
-    { id: 7, name: 'Clifford', venue: 'Ferrara', match_date:"24-05-2021",viewers_count:5, playing_teams: 'India vs SL',status:'Progress', },
-    { id: 8, name: 'Frances', venue: 'Rossini', match_date:"24-05-2021",viewers_count:5, playing_teams: 'India vs SL',status:'Progress', },
-    { id: 9, name: 'Roxie', venue: 'Harvey', match_date:"24-05-2021",viewers_count:5, playing_teams: 'India vs SL',status:'Progress' },
+    { id: 1, Team: 'Ind vs SL', Stadium: 'Dhuraiyapa',Match_date:"24-05-2021",status:'Cancelled', },
+    { id: 2, Team: 'Eng vs Scot', Stadium: 'Premadasa', Match_date:"25-05-2021",status:'Finished', },
+    { id: 3, Team: 'Ire vs Oman', Stadium: 'Pallakele', Match_date:"26-05-2021",status:'Future', },
+    { id: 4, Team: 'SL vs WI', Stadium: 'Premadasa', Match_date:"27-05-2021",status:'Progress'},
+    { id: 5, Team: 'Nz vs Aus', Stadium: 'SSC', Match_date:"28-05-2021",status:'Progress' },
+    { id: 6, Team: 'SL vs Eng', Stadium: 'Premadasa', Match_date:"29-05-2021",status:'Progress'},
+    { id: 7, Team: 'Ire vs Aus', Stadium: 'Pallakele', Match_date:"30-05-2021",status:'Progress', },
+    { id: 8, Team: 'WI vs Ind', Stadium: 'Dhuraiyapa', Match_date:"01-06-2021",status:'Progress', },
+    { id: 9, Team: 'Eng vs WI', Stadium: 'Premadasa', Match_date:"02-06-2021",status:'Progress' },
 ];
 
 export default function MatchDetail() {

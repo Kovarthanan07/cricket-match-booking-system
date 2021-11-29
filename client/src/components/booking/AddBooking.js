@@ -19,6 +19,7 @@ import {useHistory} from "react-router-dom";
 import {useState} from "react";
 import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {MenuItem, Select} from "@material-ui/core";
 
 const theme = createTheme();
 
@@ -27,6 +28,17 @@ export default function AddBooking() {
     const [sellerCreateStatus, setSellerCreateStatus] = useState();
     const [error, setError] = useState();
     const [userId, setUserId] = useState();
+
+    const [age, setAge] = React.useState('');
+    const [ticket, setTicket] = React.useState('');
+
+    const handleChange = (event) => {
+        setTicket(event.target.value);
+    };
+
+    const handleChange1 = (event) => {
+        setAge(event.target.value);
+    };
 
     const formik = useFormik({
         initialValues: {
@@ -91,91 +103,46 @@ export default function AddBooking() {
                     </Typography>
                     <form autoComplete="off" onSubmit={formik.handleSubmit}>
                         <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <FormControl sx={{width: '100%'}} variant="filled">
-                                    <InputLabel htmlFor="filled-adornment-password">Name</InputLabel>
-                                    <FilledInput
-                                        autoComplete="customer"
-                                        name="customer"
-                                        required
-                                        fullWidth
-                                        id="customer"
-                                        label="Name"
-                                        autoFocus
-                                        onChange={formik.handleChange}
-                                        value={formik.values.customer}
-                                    />
-                                    {formik.errors.customer ? (
-                                        <div className="text-danger">
-                                            {formik.errors.customer}
-                                        </div>
-                                    ) : null}
+                            <Grid item xs={12} sm={12}>
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">Match</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={age}
+                                        label="Age"
+                                        onChange={handleChange}
+                                        defaultValue={0}
+                                    >
+                                        <MenuItem value={0}>Select Match</MenuItem>
+                                        <MenuItem value={10}>Ind vs SL - 25-02-2021</MenuItem>
+                                        <MenuItem value={20}>WI vs SL - 26-02-2021</MenuItem>
+                                        <MenuItem value={30}>Ind vs Eng - 27-02-2021</MenuItem>
+                                        <MenuItem value={30}>Ire vs SL - 28-02-2021</MenuItem>
+                                        <MenuItem value={30}>Ind vs WI - 28-02-2021</MenuItem>
+                                        <MenuItem value={30}>Scot vs SL - 29-02-2021</MenuItem>
+                                    </Select>
                                 </FormControl>
                             </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <FormControl sx={{width: '100%'}} variant="filled">
-                                    <InputLabel htmlFor="filled-adornment-password">Country</InputLabel>
-                                    <FilledInput
-                                        required
-                                        fullWidth
-                                        id="country"
-                                        label="Country"
-                                        name="country"
-                                        autoComplete="country"
-                                        onChange={formik.handleChange}
-                                        value={formik.values.country}
-                                    />
-                                    {formik.errors.country ? (
-                                        <div className="text-danger">
-                                            {formik.errors.country}
-                                        </div>
-                                    ) : null}
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <FormControl sx={{width: '100%'}} variant="filled">
-                                    <InputLabel htmlFor="filled-adornment-password">Ticket</InputLabel>
-                                    <FilledInput
-                                        required
-                                        fullWidth
-                                        id="ticket"
-                                        label="ticket"
-                                        name="ticket"
-                                        autoComplete="ticket"
-                                        onChange={formik.handleChange}
-                                        value={formik.values.ticket}
-                                    />
-                                    {formik.errors.ticket ? (
-                                        <div className="text-danger">
-                                            {formik.errors.ticket}
-                                        </div>
-                                    ) : null}
+                            <Grid item xs={12} sm={12}>
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">Ticket</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={ticket}
+                                        label="Age"
+                                        onChange={handleChange}
+                                        defaultValue={10}
+                                    >
+                                        <MenuItem value={10}>Select Ticket type</MenuItem>
+                                        <MenuItem value={20}>Golden</MenuItem>
+                                        <MenuItem value={30}>Silver</MenuItem>
+                                    </Select>
                                 </FormControl>
                             </Grid>
                             <Grid item xs={12} sm={12}>
                                 <FormControl sx={{width: '100%'}} variant="filled">
-                                    <InputLabel htmlFor="filled-adornment-password">Match</InputLabel>
-                                    <FilledInput
-                                        autoComplete="place"
-                                        name="match"
-                                        required
-                                        fullWidth
-                                        id="match"
-                                        label="match"
-                                        autoFocus
-                                        onChange={formik.handleChange}
-                                        value={formik.values.match}
-                                    />
-                                    {formik.errors.match ? (
-                                        <div className="text-danger">
-                                            {formik.errors.match}
-                                        </div>
-                                    ) : null}
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={12} sm={12}>
-                                <FormControl sx={{width: '100%'}} variant="filled">
-                                    <InputLabel htmlFor="filled-adornment-password">Ticket count</InputLabel>
                                     <FilledInput
                                         autoComplete="place"
                                         name="ticket_count"
@@ -184,6 +151,7 @@ export default function AddBooking() {
                                         id="ticket_count"
                                         label="ticket_count"
                                         autoFocus
+                                        placeholder="Count"
                                         onChange={formik.handleChange}
                                         value={formik.values.ticket_count}
                                     />
@@ -201,6 +169,7 @@ export default function AddBooking() {
                             fullWidth
                             variant="contained"
                             sx={{mt: 3, mb: 2}}
+                            style={{marginTop:20, backgroundColor:'blue'}}
                         >
                             Add Stadium
                         </Button>
